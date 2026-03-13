@@ -13,7 +13,6 @@ class Table extends Component {
         }
     };
 
-    // Fonction pour les couleurs de Priorité
     getPrioriteClass = (priorite) => {
         switch (priorite) {
             case 'Urgent': return 'badge-urgent';
@@ -23,8 +22,10 @@ class Table extends Component {
             default: return '';
         }
     };
+
     render() {
-        const { tickets } = this.props;
+        const { tickets, onEdit } = this.props;
+        
         return (
             <div className="table-container">
                 <table className="ticket-table">
@@ -67,7 +68,11 @@ class Table extends Component {
                                 <td>
                                     <div className="actions-cell">
                                         <MdNotifications className="icon-bell" />
-                                        <MdMoreVert className="icon-more" />
+                                        <MdMoreVert 
+                                            className="icon-more" 
+                                            style={{ cursor: 'pointer' }} 
+                                            onClick={() => onEdit(ticket)} 
+                                        />
                                     </div>
                                 </td>
 

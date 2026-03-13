@@ -27,7 +27,7 @@
 
 
   th:nth-child(1) { width: 3%; }  /* ID */
-  th:nth-child(2) { width: 25%; text-align: left; } /* Titre */
+  th:nth-child(2) { width: 25%; } /* Titre */
   th:nth-child(3) { width: 12%; } /* Client */
   th:nth-child(4) { width: 18%; } /* Attribué à */
   th:nth-child(5) { width: 10%; } /* Statut */

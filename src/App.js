@@ -4,14 +4,13 @@ import Table from './component/Table';
 import './App.css';
 import Ticket from './component/Ticket';
 import Filtre from './component/Filtre';
+import TicketUpdate from './component/TicketUpdate'; // <-- Nouvel import
 
 import iconeFiltre from './icone/filtre.png';
 import ava1 from './avatar/ava1.jpeg';
 import ava2 from './avatar/ava2.jpeg';
 import ava3 from './avatar/ava3.jpeg';
 import ava4 from './avatar/ava4.jpeg';
-
-
 
 class App extends Component {
   constructor(props) {
@@ -20,6 +19,8 @@ class App extends Component {
     this.state = {
       isPopupOpen: false,
       isFiltreOpen: false, 
+      isPopupOpenUpdate: false, // <-- Nouvel état
+      ticketEnModification: null, // <-- Nouvel état
 
       filtres: {
         priorite: '',
@@ -38,12 +39,55 @@ class App extends Component {
     };
   }
 
-  ouvrirPopupAjout = () => {
-    this.setState({ isPopupOpen: true })
+  // --- GESTION DE LA MODIFICATION ---
+  ouvrirPopupModification = (ticket) => {
+    this.setState({
+      isPopupOpenUpdate: true,
+      ticketEnModification: ticket
+    });
   }
+
+  fermerPopupModification = () => {
+    this.setState({
+      isPopupOpenUpdate: false,
+      ticketEnModification: null
+    });
+  }
+
+  mettreAJourTicket = (donneesModifiees) => {
+    const ticketsMisAJour = this.state.tickets.map(ticket => {
+      if (ticket.id === donneesModifiees.id) {
+        return {
+          ...ticket,
+          title: donneesModifiees.titre, 
+          client: donneesModifiees.client,
+          attribueA: donneesModifiees.attribueA,
+          description: donneesModifiees.description,
+          statut: donneesModifiees.statut,
+          priorite: donneesModifiees.priorite,
+          categorie: donneesModifiees.categorie,
+          avatar: donneesModifiees.avatar
+        };
+      }
+      return ticket;
+    });
+
+    this.setState({
+      tickets: ticketsMisAJour,
+      isPopupOpenUpdate: false,
+      ticketEnModification: null
+    });
+  }
+
+  // --- GESTION DE L'AJOUT ---
+  ouvrirPopupAjout = () => {
+    this.setState({ isPopupOpen: true })  
+  }
+
   fermerPopup = () => {
     this.setState({ isPopupOpen: false });
   }
+
   ajouterTicket = (nouveauTicketData) => {
     const nouveauTicket = {
       id: this.state.tickets.length + 1,
@@ -51,20 +95,18 @@ class App extends Component {
       client: nouveauTicketData.client,
       attribueA: nouveauTicketData.attribueA,
       avatar: nouveauTicketData.avatar,
-
-      // On récupère maintenant le statut directement depuis le formulaire !
       statut: nouveauTicketData.statut,
-
       priorite: nouveauTicketData.priorite,
       categorie: nouveauTicketData.categorie
     };
 
     this.setState(prevState => ({
       tickets: [...prevState.tickets, nouveauTicket],
-      isPopupOpen: false
+      isPopupOpen: false,
     }));
   }
 
+  // --- GESTION DES FILTRES ---
   toggleFiltre = () => {
     this.setState(prevState => ({ isFiltreOpen: !prevState.isFiltreOpen }));
   }
@@ -81,7 +123,6 @@ class App extends Component {
     });
   }
 
-  // NOUVEAU: Met à jour la valeur d'un filtre précis
   handleFilterChange = (nomDuFiltre, valeur) => {
     this.setState(prevState => ({
       filtres: {
@@ -92,7 +133,6 @@ class App extends Component {
   }
 
   render() {
-
     const ticketsFiltres = this.state.tickets.filter(ticket => {
       const { filtres } = this.state;
       return (
@@ -106,9 +146,6 @@ class App extends Component {
 
     const techniciensUniques = [...new Set(this.state.tickets.map(ticket => ticket.attribueA))];
     const clientsUniques = [...new Set(this.state.tickets.map(ticket => ticket.client))];
-
-    console.log("Tous les tickets actuels :", this.state.tickets);
-    console.log("Techniciens extraits :", techniciensUniques);
 
     return (
       <div className="App" style={{ padding: '20px' }}>
@@ -136,15 +173,25 @@ class App extends Component {
               clientsList={clientsUniques}
             />
           )}
-
         </div>
 
-
-        <Table tickets={ticketsFiltres} />        
+        <Table 
+          tickets={ticketsFiltres} 
+          onEdit={this.ouvrirPopupModification} 
+        />        
+        
         {this.state.isPopupOpen && (
           <Ticket
             onClose={this.fermerPopup}
             onSave={this.ajouterTicket}
+          />
+        )}
+
+        {this.state.isPopupOpenUpdate && this.state.ticketEnModification && (
+          <TicketUpdate
+            ticket={this.state.ticketEnModification}
+            onClose={this.fermerPopupModification}
+            onSave={this.mettreAJourTicket}
           />
         )}
       </div>

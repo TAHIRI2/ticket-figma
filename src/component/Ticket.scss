@@ -1,14 +1,16 @@
 /* --- FOND GRIS TRANSPARENT --- */
 .modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 9999;
-  
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    overflow-y: auto;
+
 }
+
 /* --- LA BOITE BLANCHE --- */
 .modal-content {
     background-color: #FFFFFF;
@@ -24,7 +26,8 @@
         text-align: left;
         margin-top: 0;
         margin-bottom: 24px;
-        font-family: 'Roboto', sans-serif; /* Corrigé ici */
+        font-family: 'Roboto', sans-serif;
+        /* Corrigé ici */
         font-weight: 700;
         font-size: 20px;
         line-height: 100%;
@@ -33,7 +36,7 @@
 
     position: absolute;
     top: 100px;
-    left: 50%; 
+    left: 50%;
     transform: translateX(-50%);
 
 }
@@ -81,14 +84,14 @@
     textarea,
     select {
         width: 100%;
-        height: 32px; 
+        height: 32px;
         box-sizing: border-box;
         border: 1px solid #B6BFC8;
         border-radius: 4px;
-        padding: 0 12px; 
+        padding: 0 12px;
         margin-bottom: 10px;
         background-color: #F8F9FA;
-        
+
         font-family: 'Roboto', sans-serif;
         font-size: 10px;
         font-weight: 700;
@@ -111,7 +114,7 @@
 
     textarea {
         resize: none;
-        height: auto; 
+        height: auto;
         min-height: 80px;
         padding: 10px 12px;
     }
@@ -181,8 +184,10 @@
     }
 
     .btn-enregistrer {
-        width: 98px; /* Unités px ajoutées */
-        height: 31px; /* Unités px ajoutées */
+        width: 98px;
+        /* Unités px ajoutées */
+        height: 31px;
+        /* Unités px ajoutées */
         border-radius: 5px;
         background-color: #1890FF;
         border: none;
