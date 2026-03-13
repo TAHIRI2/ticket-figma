@@ -1,0 +1,147 @@
+.filtre-popup {
+  position: absolute;
+  top: 180px;
+  right: 10px;
+  z-index: 100;
+
+  background-color: #FFFFFF;
+  border: 2px solid #1890FF;
+  border-radius: 4px;
+  padding: 16px 24px;
+  /* Un peu moins de padding vertical car on a le header/footer */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 550px;
+
+  /* On passe en flex colonne pour empiler Header -> Grille -> Footer */
+  display: flex;
+  flex-direction: column;
+}
+
+.filtre-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+
+  .icon-close {
+    font-size: 20px;
+    color: #8C8C8C;
+    cursor: pointer;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #FF4D4F;
+    }
+  }
+}
+
+.filtre-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px 24px;
+  margin-bottom: 16px;
+}
+
+.filtre-group {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-family: Roboto;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 12px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: #29394D;
+    margin-bottom: 6px;
+    text-align: left;
+  }
+
+  select {
+    width: 164px;
+    height: 32px;
+    top: 249px;
+    left: 387px;
+    border-radius: 5px;
+    angle: 0 deg;
+    opacity: 1;
+    border-width: 1px;
+    background-color: #F8F9FA;
+    border: 1px solid #B6BFC8;
+
+    color: #6D7F92;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400; 
+    font-size: 10px;
+    line-height: 100%;
+
+    cursor: pointer;
+
+
+    padding: 0 40px 0 8px;
+
+    outline: none;
+
+    
+    /* 1. On efface la flèche par défaut du navigateur */
+    appearance: none; 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    /* 2. On dessine nos propres fonds (le chevron en SVG + la ligne en dégradé) */
+    background-image: 
+          url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"),
+      /* La ligne de séparation verticale */
+      linear-gradient(to bottom, #CED4DA, #CED4DA);
+
+    background-position: 
+      right 8px center, 
+      right 32px center;
+    
+    /* 4. On donne leur taille */
+    background-size: 
+      16px 16px, 
+      1px 80%;  
+      
+    background-repeat: no-repeat;
+
+
+    &:focus {
+      border-color: #1890FF;
+    }
+
+    option {
+      color: #333333; 
+      font-size: 12px; 
+      font-weight: 500;
+    }
+  }
+}
+
+
+.filtre-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 12px;
+  border-top: 1px solid #E8E8E8;
+
+  .btn-vider {
+    background: none;
+    border: none;
+    color: #1890FF;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+      color: #096DD9;
+      text-decoration: underline;
+    }
+  }
+}

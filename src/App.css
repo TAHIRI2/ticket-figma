@@ -1,0 +1,118 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.actions-bar {
+  display: flex;
+  /* L'astuce magique : space-between pousse les éléments aux deux extrémités */
+  justify-content: space-between;
+  align-items: center;
+  /* Aligne les boutons verticalement */
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+
+/* TON BOUTON INTACT - Ne change rien ici */
+.btn-ajouter {
+  width: 201px;
+  height: 36px;
+  background-color: #FFFFFF;
+  border: 1px solid;
+  border-color: #808080;
+  border-radius: 2px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 400;
+  color: #000000;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #F8F9FA;
+  }
+}
+
+/* LE NOUVEAU BOUTON FILTRE (Style Figma) */
+.btn-filtre {
+
+  width: 81;
+  angle: 0 deg;
+  opacity: 1;
+  height: 29px;
+ 
+  padding: 0 16px;
+  background-color: #E8ECEF;
+
+  border: none;
+  border-radius: 20px;
+
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: Roboto;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 12px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  vertical-align: middle;
+
+  cursor: pointer;
+
+  .icon-filtre-img {
+    width: 21px;
+    height: 21px;
+    margin-left: 8px;
+    object-fit: contain;
+  }
+
+  &:hover {
+    background-color: #2495E1;
+    color: #FFFFFF;
+  }
+
+}

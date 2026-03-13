@@ -1,0 +1,195 @@
+/* --- FOND GRIS TRANSPARENT --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  
+}
+/* --- LA BOITE BLANCHE --- */
+.modal-content {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    padding: 32px;
+    width: 700px;
+    max-width: 90%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    max-height: 90vh;
+    overflow-y: auto;
+
+    h2 {
+        text-align: left;
+        margin-top: 0;
+        margin-bottom: 24px;
+        font-family: 'Roboto', sans-serif; /* Corrigé ici */
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 100%;
+        color: #AAAAAA;
+    }
+
+    position: absolute;
+    top: 100px;
+    left: 50%; 
+    transform: translateX(-50%);
+
+}
+
+/* --- STRUCTURE DU FORMULAIRE --- */
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 16px;
+}
+
+.align-start {
+    align-items: flex-start;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+
+    &.full-width {
+        width: 100%;
+    }
+
+    &.half-width {
+        width: 50%;
+    }
+
+    label {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        color: #333333;
+        margin-bottom: 8px;
+        text-align: left;
+        display: block;
+    }
+
+    .required {
+        color: #FF4D4F;
+        margin-left: 4px;
+    }
+
+    input,
+    textarea,
+    select {
+        width: 100%;
+        height: 32px; 
+        box-sizing: border-box;
+        border: 1px solid #B6BFC8;
+        border-radius: 4px;
+        padding: 0 12px; 
+        margin-bottom: 10px;
+        background-color: #F8F9FA;
+        
+        font-family: 'Roboto', sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        color: #6D7F92;
+        line-height: normal;
+
+        &:focus {
+            outline: none;
+            border-color: #1890FF;
+        }
+
+        /* Le placeholder doit être à l'intérieur de l'élément ciblé */
+        &::placeholder {
+            color: #6D7F92;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            font-size: 10px;
+        }
+    }
+
+    textarea {
+        resize: none;
+        height: auto; 
+        min-height: 80px;
+        padding: 10px 12px;
+    }
+}
+
+.selects-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* --- SÉLECTEUR D'AVATAR --- */
+.avatar-picker {
+    display: flex;
+    gap: 12px;
+
+    .avatar-option {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        object-fit: cover;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: all 0.2s;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+
+        &.selected {
+            border-color: #1890FF;
+            box-shadow: 0 0 8px rgba(24, 144, 255, 0.5);
+        }
+    }
+}
+
+/* --- BOUTONS DU FOOTER --- */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid #B6BFC8;
+
+    button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 4px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        font-size: 12px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .btn-annuler {
+        padding: 8px 24px;
+        color: #6D7F92;
+        background-color: #FFFFFF;
+        border: 1px solid #B6BFC8;
+
+        &:hover {
+            background-color: #F5F5F5;
+        }
+    }
+
+    .btn-enregistrer {
+        width: 98px; /* Unités px ajoutées */
+        height: 31px; /* Unités px ajoutées */
+        border-radius: 5px;
+        background-color: #1890FF;
+        border: none;
+        color: #FFFFFF;
+
+        &:hover {
+            background-color: #40A9FF;
+        }
+    }
+}

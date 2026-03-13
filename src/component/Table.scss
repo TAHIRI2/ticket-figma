@@ -1,0 +1,139 @@
+.table-container {
+    width: 100%;
+}
+
+
+.ticket-table {
+  width: 100%;
+  border-collapse: collapse; 
+  table-layout: fixed; 
+
+  th, td {
+    padding: 12px;
+    border: 1px solid #DDDDDD;
+    vertical-align: middle;
+    text-align: center;
+    word-wrap: break-word;
+  }
+
+  th {
+    background-color: #F1F2F4;
+    font-family: 'Roboto';
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+    height: 37px;
+  }
+
+
+  th:nth-child(1) { width: 3%; }  /* ID */
+  th:nth-child(2) { width: 25%; text-align: left; } /* Titre */
+  th:nth-child(3) { width: 12%; } /* Client */
+  th:nth-child(4) { width: 18%; } /* Attribué à */
+  th:nth-child(5) { width: 10%; } /* Statut */
+  th:nth-child(6) { width: 10%; } /* Priorité */
+  th:nth-child(7) { width: 12%; } /* Catégorie */
+  th:nth-child(8) { width: 5%; }  /* Actions (cloche + points) */
+
+ 
+  td:nth-child(2) {
+    text-align: left;
+  }
+}
+
+.actions-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    height: 100%;
+
+    .icon-bell,
+    .icon-more {
+        font-size: 48px;
+        color: #333333;
+        cursor: pointer;
+
+        &:hover {
+            color: #000000;
+        }
+    }
+}
+
+
+.cell-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.avatar-img {
+  width: 35px; 
+  height: 35px; 
+  border-radius: 50%; 
+  object-fit: cover;
+  display: block; /* Sécurité pour éviter le trait fantôme sous l'image */
+}
+
+.avatar-name {
+  font-family: 'Roboto';
+  font-weight: 600; 
+  color: #173b6c; 
+  font-size: 14px;
+  margin: 0;
+}
+
+
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 6px; 
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+ 
+  min-width: 70px; 
+}
+
+.badge-ouvert {
+  background: #E8F6FF; 
+  color: #5197DA;   
+}
+
+.badge-encours {
+  background-color: #FDF3EA; 
+  color: #D87318;           
+}
+
+.badge-archive {
+  background-color: #F1F3F5;
+  color: #29394D;            
+}
+
+.badge-resolut {
+  background-color: #E7FCF8; 
+  color: #02AF8E;            
+}
+
+
+.badge-urgent {
+  background-color: #FDEFEF; 
+  color: #DE4848;            
+}
+
+.badge-faible {
+  background-color: #E8F6FF;
+  color: #5197DA;            
+}
+
+.badge-moyen {
+  background-color: #E7FCF8; 
+  color: #02AF8E;            
+}
+
+.badge-eleve {
+  background-color: #FDF3EA; 
+  color: #D87318;           
+}
